@@ -1,3 +1,15 @@
+# Getting Started with Docker
+
+`docker build -t friends-tales:dev .`
+`docker run \
+-it \
+--rm \
+-v ${PWD}:/app \
+-v /app/node_modules \
+-p 3001:3000 \
+-e CHOKIDAR_USEPOLLING=true \
+friends-tales:dev`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

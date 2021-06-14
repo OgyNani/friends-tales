@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid, Card, Label, Icon, Divider,
-} from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import moment from 'moment';
 import { Timeline, TimelineItem }  from 'vertical-timeline-component-for-react';
 
 class Tale extends Component {
-
-
-
     render() {
       
-      const {
-        direction, icon, title, time, description, tags, labelColor, lineHeight = 4, lineColor = 'grey', color = 'grey'
-      } = this.props;
-      const textAlign = direction === 'left' ? 'right' : 'left';
-      
-      
-  
-      const isMobile = window.innerWidth <= 768;
-      const height = isMobile ? `${lineHeight * 350}px` : `${lineHeight * 250}px`;
-  
       return (
         <div>
           
@@ -156,19 +140,6 @@ class Tale extends Component {
     color: PropTypes.string,
   };
   
-  const mapStateToProps = state => {
-    return { 
-        // myself: state.myself 
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        // onSelectCategory: (id, count) => {
-            // dispatch(selectCategory(id, count))
-        // }
-    }
-}
 
 export default (Tale);
 
