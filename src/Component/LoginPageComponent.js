@@ -2,9 +2,7 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { ajax } from 'rxjs/ajax';
-import { saveMyself } from '../rootReducer';
 import history from '../history';
-
 
 class LoginPageComponent extends React.Component {
 
@@ -25,21 +23,9 @@ class LoginPageComponent extends React.Component {
             body: {email: this.state.loginEmail, password: this.state.loginPassword}
         }).subscribe(
             res => {
-                this.setState({token: res.response.token});
-                ajax({
-                    url: 'http://simple-bo.com/api/get-myself',
-                    method: 'GET',
-                    crossDomain: true,
-                    headers: {Authorization: "Bearer " + res.response.token}
-                })
-                .subscribe(
-                    res => {
-                        //this.setState({myself: res.response.data});
-                        this.props.onSuccessLogin(res.response.data);
-                        history.push("/");
-                    },
-                    err => console.error(err)
-                );
+                const token = res.response.token;
+                localStorage.setItem('token', token);
+                history.push("/");
             },
             err => console.error(err)
         );
@@ -103,11 +89,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onSuccessLogin: id => {
-            dispatch(saveMyself(id))
-        }
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPageComponent);

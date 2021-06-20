@@ -1,10 +1,7 @@
 import React from 'react';
 import { Button, Nav, Navbar, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
-
 import { search } from '../rootReducer';
-
 
 class TopMenu extends React.Component {
     constructor(props) {
@@ -17,7 +14,6 @@ class TopMenu extends React.Component {
         e.preventDefault();
         this.props.onSearch(this.state.text);
     }
-
 
     render() {
         return (
@@ -35,9 +31,9 @@ class TopMenu extends React.Component {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         {this.props.myself && <Navbar.Text>
-                            <Button variant="outline-primary">{this.props.myself.name} <i class="fas fa-user"></i></Button>
+                            <Button variant="outline-primary">{this.props.myself.name} <i className="fas fa-user"></i></Button>
                             <Button variant="outline-secondary" className="ms-1 logout" href="/login" >
-                                Logout <i class="fas fa-sign-out-alt"></i>
+                                Logout <i className="fas fa-sign-out-alt"></i>
                             </Button>
                             
                         </Navbar.Text>}
